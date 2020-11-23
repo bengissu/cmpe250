@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}
+
+\usepackage[mathcal]{euscript}
+\usepackage{mathrsfs}
+\usepackage{amsfonts,amssymb,amsbsy,amsmath}
+\usepackage{amsthm,verbatim}
+%\usepackage[mathscr]{eucal}
+\usepackage{latexsym}
+\usepackage{yfonts}
+\usepackage[latin5]{inputenc}
+
+\allowdisplaybreaks
+\parindent=0in
+\parskip=10pt
+    
+\pagestyle{empty}
+\textwidth 18.0cm
+\topmargin -2.5cm
+\textheight 27.0cm
+\oddsidemargin -1.0cm
+\parindent 0.0cm
+
+\begin{document}
+%\leftline{Student name:} 
+%leftline{Student \#}
+
+\begin{center}
+{\bf Bo\~gazi\c{c}i University, Math 327 Number Theory},  C. Y. Y{\i}ld{\i}r{\i}m \\ 
+\mbox{} \\
+{\bf Examples on Chapter 2 of Baker's book}, \, November 2020 \\
+\mbox{} \\
+%{\bf Questions}
+\end{center}
+
+
+{\bf 1)} (Baker, 2.10 Ex.(i); NZM Problem 4.3.7) Evaluate $\displaystyle \sum_{d \mid n}\mu(d)\sigma(d)$.
+\vskip .3cm
+Since both of $\mu$ and $\sigma$ are multiplicative functions, by the result on p. 9 of Baker (which is Theorem 4.4 of NZM), the given sum is also a multiplicative function of $n$. Hence to find the values of this sum at all integers $n$, it is enough to find its values at the prime powers.
+Now, for $n =p^j,\, j\in \mathbb{Z}^{+}$, we have, since $\mu(p^2) = \mu(p^3) = \cdots  = 0$, 
+$\displaystyle \sum_{d \mid p^j}\mu(d)\sigma(d) = \mu(1)\sigma(1) + \mu(p)\sigma(p)= 1\cdot 1 + (-1)\cdot(p+1) = -p$. So, for $n=p_{1}^{j_1}\cdots p_{k}^{j_k},
+\, ( j_1, \ldots, j_k > 0)$, we have $\displaystyle \sum_{d \mid n}\mu(d)\sigma(d) = (-1)^{k}p_1 \cdots p_k$.
+
+{\bf 2)} (Baker, 2.10 Ex.(iii)) Prove that $\displaystyle {1\over n} \sum_{1\leq a \leq n \atop (a,n)=1}a = {\phi(n)\over 2}$ for $n >1$.
+\vskip .3cm
+$ \displaystyle \sum_{1\leq a \leq n \atop (a,n)=1}a = \sum_{1 \leq a \leq n}a\sum_{d\mid (a,n)}\mu(d)$ by the basic property of the M\"{o}bius function (Baker p.10;
+NZM Theorem 4.7). Now, writing $a =db$, we have
+\begin{align*}
+\sum_{1 \leq a \leq n}a\sum_{d\mid (a,n)}\mu(d) & = \sum_{d\mid n}\mu(d)\sum_{1 \leq a \leq n \atop d \mid a}a =  \sum_{d\mid n}d\mu(d)\sum_{b \leq {n\over d}}b =  \sum_{d\mid n}d\mu(d) \big({1\over 2}{n\over d}({n\over d}+1)\big) \\
+& = {n^2\over 2}\sum_{d \mid n}{\mu(d)\over d} + {n\over 2}\sum_{d \mid n}\mu(d) =  {n^2\over 2}\sum_{d \mid n}{\mu(d)\over d}  \; (\mathrm{for} \; n>1) \\
+& =  {n \phi(n)\over 2} \; (\mathrm{ Baker \, p. 11; NZM \, formula \, (4.1) \, on \, p. 195}) 
+\end{align*}
+(Note that for $n=1$, the term $\displaystyle {n\over 2}\sum_{d \mid n}\mu(d)$ in the penultimate line of the arrayed equations above is not $0$, instead it is 
+$\displaystyle {1\over 2}$). (Baker 2.10 Ex.(iv), and the result of NZM Problem 4.3.12 can be done similarly).
+\vskip .3cm
+
+{\bf 3)} (Baker 2.10 Ex.(xi)) Prove that $\displaystyle \sum_{n=1}^{\infty}{\phi(n)x^n\over 1-x^n} = {x\over (1-x)^2},\, (|x| < 1)$. (Series of this kind are called Lambert series).
+\vskip .3cm
+We need $|x|<1$ for convergence. We have, writing $m=nk$ and using Theorem 4.6 of NZM (or see Baker p. 10), 
+\begin{align*}
+\sum_{n=1}^{\infty}{\phi(n)x^n\over 1-x^n} = \sum_{n=1}^{\infty}\phi(n)\sum_{k=1}^{\infty}x^{nk} = \sum_{m=1}^{\infty}x^m \sum_{n\mid m}\phi(n)
+= \sum_{m=1}^{\infty}m x^m = {x\over (1-x)^2}.
+\end{align*}
+\vskip .3cm
+
+{\bf 4)} (Baker 2.10 Ex.(ii); NZM formula (8.42) The arithmetic function  $\Lambda(n)$, known as von Mangoldt's function, is defined as follows: 
+\begin{align*}
+\Lambda(n) = \left\{
+\begin{array}{llll}
+\log p & \mbox{if $n=p^{a}$ with $p$ prime and $a\in \mathbb{Z}^{+}$} \\
+0 & \mbox{otherwise}. \end{array}
+\right.
+\end{align*}
+Evaluate $\displaystyle \sum_{d\mid n}\Lambda(d)$. Express $\displaystyle \sum_{n=1}^{\infty}{\Lambda(n)\over n^s}$ in terms of $\zeta(s)$.
+\vskip .3cm
+Here we have to take $s >1$, or more generally for $s$ a complex number $\Re s >1$, in order to have convergence and absolute convergence in the
+concerned infinite series and infinite products. Here we shall not be very much concerned with convergence issues, but instead we will be dealing with
+manipulations on series and products.
+The Riemann zeta-function, $\zeta(s)$ is defined as
+\begin{align*}
+\zeta(s) := \sum_{n=1}^{\infty}{1\over n^s},\quad (s>1 \, \mathrm{for}\, s\in \mathbb{R}; \Re s >1\, \mathrm{for}\, s\in \mathbb{C}).
+\end{align*}
+There is the Euler product formula
+\begin{align*}
+\zeta(s) = \sum_{n=1}^{\infty}{1\over n^s}=
+\prod_{p:\,\mathrm{prime}}\big(1-{1\over p^s}\big)^{-1},\quad  (s>1 \, \mathrm{for}\, s\in \mathbb{R}; \Re s >1\, \mathrm{for}\, s\in \mathbb{C}).
+\end{align*}
+The equality of the series and the product for $\zeta(s)$ is just an analytic way of expressing the fundamental theorem of arithmetic. This is briefly explained
+on pp. 15-16 of Baker's book, or in some more detail \S 8.2 of NZM. Taking logarithms in the product formula, we have (subject to the specified restriction
+on the domain of $s$)
+\begin{align*}
+\log \zeta(s) = \log\Big(\prod_{p:\,\mathrm{prime}}\big(1-{1\over p^s}\big)^{-1}\Big) = -\sum_{p:\,\mathrm{prime}}\log\big(1-{1\over p^s}\big).
+\end{align*}
+Now taking derivatives of both sides, we have
+\begin{align*}
+{\zeta'(s)\over \zeta(s)} = - \sum_{p:\,\mathrm{prime}}{1\over 1-{1\over p^s}}{\log p\over p^s} = - \sum_{p:\,\mathrm{prime}}(\log p) \Big(
+{1\over p^s} +{1\over p^{2s}} + {1\over p^{3s}} + \cdots \Big) = -\sum_{n=1}^{\infty}{\Lambda(n)\over n^s}.
+\end{align*}
+We also have, from term-by-term differentiation of the series for $\zeta(s)$ that
+\begin{align*}
+\zeta'(s) = -\sum_{n=1}{\log n\over n^s}.
+\end{align*} 
+Multiplication of the series for $\displaystyle {\zeta'(s)\over \zeta(s)}$ and $\zeta(s)$ should give the series for $\zeta'(s)$. This would reveal
+\begin{align*}
+\sum_{d\mid n}\Lambda(d) = \log n.
+\end{align*}
+But we could have obtained this result directly from the definition of $\Lambda(n)$. Let $n = p_{1}^{a_1}\cdots p_{k}^{a_k}$ (here the $p_i$ are primes
+and the $a_i$ are positive integers) be the factorization of $n$ into primes. Then, since $\Lambda(d)$ is non-zero only when $n$ is a prime power, we have
+\begin{align*}
+\sum_{d\mid n}\Lambda(d) = a_{1}\log p_1 + \cdots a_{k}\log p_k = \log n.
+\end{align*}
+\vskip .3cm
+
+
+{\bf 5)} (NZM 8.3.19-20) Show that $\displaystyle \Phi(x) := \sum_{1 \leq n\leq x}\phi(n) ={3\over \pi^2}x^2 + O(x\log x)$ for $x \geq 2$. Show that
+the number of pairs of integers $m\leq x, n\leq x,\, (m,n) =1$ is $2\Phi(x)+1$. Deduce that if two integers are chosen at random from the interval
+$[1,x]$ then the probability that they are relatively prime is approximately $\displaystyle {6\over \pi^2}$ if $x$ is large.
+
+These are all solved on p.14 of Baker's book. Here we make a direct calculation.
+\begin{align*}
+\sum_{m,n \leq x \atop (m,n)=1}1 & = \sum_{m,n \leq x}\,\sum_{d\mid m,\, d\mid n}\mu(d) 
+= \sum_{d\leq x}\mu(d) \, \sum_{m \leq {x\over d},\, n\leq {x\over d}} 1
+= \sum_{d\leq x}\mu(d)\Big({\lfloor x\rfloor\over d}\Big)^2 = \sum_{d\leq x}\mu(d)\Big(\big({x\over d}\big)^2 + O({x\over d})\Big) \\
+& = x^2 \sum_{d\leq x}{\mu(d)\over d^2} + O\big(x\sum_{d\leq x}{1\over d}\big) = x^2 \Big( \sum_{d=1}^{\infty}{\mu(d)\over d^2} -
+\sum_{d > x}{\mu(d)\over d^2} \Big) +O(x\log x) = {x^2\over \zeta(2)} + O(x\log x) \\
+& = {6x^2\over \pi^2} + O(x\log x).
+\end{align*}
+Here we have used $\displaystyle \sum_{n=1}^{\infty}{\mu(n)\over n^s} = {1\over \zeta(s)}$ for $s>1$ (or for complex $s$, $\Re s > 1$) (Baker  p.16 or
+Theorem 8.15 of NZM);
+$\displaystyle \zeta(2) =\sum_{n=1}^{\infty}{1\over n^2} ={\pi^2\over 6}$ (appendix A.3 of NZM on pp. 490-491); $\displaystyle \big|\sum_{d > x}{\mu(d)\over d^2}\big| \leq  
+\sum_{d > x}{1\over d^2} =O\big({1\over x}\big)$ (the first inequality is obvious, and the $O$-estimate follows from comparing the series 
+with the integral $\displaystyle \int_{x}^{\infty}{dx\over x^2}$); $\displaystyle \sum_{d\leq x}{1\over d} = O(\log x)$ (by comparing the series with $\displaystyle
+\int_{1}^{x}{du\over u}$).
+
+In fact, for the last result one can easily have the much more precise estimate 
+$\displaystyle \sum_{d\leq x}{1\over d} = \log x + \gamma +O\big({1\over x}\big)$. This is done Lemma 8.27 of NZM (pp. 391-392). A recommended reading
+on this matter is \S 22.5 of Hardy \& Wright's classic book.
+
+
+
+\end{document}
+
+
